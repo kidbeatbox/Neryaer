@@ -1,0 +1,36 @@
+package test;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
+
+import io.github.bonigarcia.wdm.WebDriverManager;
+
+public class Test1_GoogleSearch {
+	public static void main(String[] args) {
+		googleSearch();
+	}
+
+	public static void googleSearch() {
+
+		WebDriverManager.firefoxdriver().setup();
+
+		WebDriver driver = new FirefoxDriver();
+
+		// goto google.com
+		driver.get("https://google.com");
+
+		// enter text in search textbox
+		driver.findElement(By.name("q")).sendKeys("Automation Step By Step");
+
+		// click on search button
+		// driver.findElement(By.name("btnK")).click();
+		driver.findElement(By.name("btnK")).sendKeys(Keys.ENTER);
+
+		// close browser
+		driver.close();
+
+		System.out.println("Test completed Successfully");
+	}
+}
